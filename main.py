@@ -18,9 +18,9 @@ class BossFight: # Create class for fight sequence
             "boing_jump" : {"slinky_smash": 0.1, "yucky_breath" : 0.6, "boing_jump" : 0.3}
         },
         "phase_2" : {
-            "extended_chomp" : {"extended_chomp" : 0.3, "squeeze_attack" : 0.5, "barrel_roll" : 0.2},
-            "squeeze_attack": {"extended_chomp" : 0.1, "squeeze_attack" : 0.5, "barrel_roll" : 0.4},
-            "barrel_roll" : {"extended_chomp" : 0.3, "squeeze_attack" : 0.3, "barrel_roll" : 0.4}
+            "extended_chomp" : {"extended_chomp" : 0.3, "tail_whip" : 0.5, "barrel_roll" : 0.2},
+            "tail_whip": {"extended_chomp" : 0.1, "tail_whip" : 0.5, "barrel_roll" : 0.4},
+            "barrel_roll" : {"extended_chomp" : 0.3, "tail_whip" : 0.3, "barrel_roll" : 0.4}
         },
         "phase_3" : {
             "hot_dog" : {"hot_dog" : 0.7, "plane_dog": 0.2, "dancing_hot_dog" : 0.1},
