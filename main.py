@@ -8,7 +8,7 @@
 
 # Import dependencies
 import numpy as np
-import imageio as img
+import imageio.v2 as img
 
 class BossFight: # Create class for fight sequence
     transition_matrices = {
@@ -29,19 +29,28 @@ class BossFight: # Create class for fight sequence
         }
     }
 
-    def generate_full_fight(self):
-        frames = np.vstack([
-            img.imread("assets/start.gif"),
-            img.imread("assets/phase1_title.gif"),
-            img.imread("assets/phase1_attack.gif"),
-            img.imread("assets/phase2_title.gif"),
-            img.imread("assets/phase2_attack.gif"),
-            img.imread("assets/phase3_title.gif"),
-            img.imread("assets/phase3_attack.gif"),
-            img.imread("assets/knockout.gif")
-        ])
+    def get_fights(self):
+        for phase, phase_attacks in self.transition_matrices.items():
+            weiner_dog = WeinerDog(phase_attacks)
+            attack_sequence = weiner_dog.create_attack_sequence(list(phase_attacks)[0])
+            weiner_dog.generate_phase_sequence_animation(attack_sequence, phase)
 
-        img.imwrite("examples/weiner_dog_markov_fight.gif", frames)
+    def generate_full_fight(self):
+        gif_list = [
+            img.get_reader("markov-distinction-proj/assets/start.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase1_title.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase_1_attack.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase2_title.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase_2_attack.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase3_title.gif"),
+            img.get_reader("markov-distinction-proj/assets/phase_3_attack.gif"),
+            img.get_reader("markov-distinction-proj/assets/knockout.gif")
+        ]
+        final_gif = img.get_writer("markov-distinction-proj/examples/weiner_dog_markov_fight.gif")
+
+        for gif in gif_list:
+            for frame in gif:
+                final_gif.append_data(frame)
 
 class WeinerDog: # Create class for WeinerDog based on the phase
     def __init__(self, transition_matrix):
@@ -60,7 +69,7 @@ class WeinerDog: # Create class for WeinerDog based on the phase
             p=[self.transition_matrix[current_attack][next_attack] for next_attack in self.attacks]
         )
     
-    def create_attack_sequence(self, current_attack="slinky_smash", sequence_length=10):
+    def create_attack_sequence(self, current_attack, sequence_length=5):
         """
             Generate a attack sequence based on the given transition matrix
             for the phase
@@ -78,9 +87,27 @@ class WeinerDog: # Create class for WeinerDog based on the phase
 
         return attack_sequence
     
-    def generate_phase_sequence(self, attack_sequence, phase_num):
+    def generate_phase_sequence_animation(self, attack_sequence, phase_num):
         animated_images = []
         for attack in attack_sequence:
-            image_path = str("assets/" + attack + ".gif")
-            animated_images.append(img.imread(image_path))
-        img.mimsave(str("assets/phase" + phase_num + "_attack.gif"), animated_images)
+            image_path = str("markov-distinction-proj/assets/" + attack + ".gif")
+            animated_images.append(img.get_reader(image_path))
+
+        phase_attack_sequence = img.get_writer("markov-distinction-proj/assets/" + phase_num + "_attack.gif")
+        
+        print("GENERATING ATTACKS")
+        for gif in animated_images:
+            for frame in gif:
+                phase_attack_sequence.append_data(frame)
+            print("GENERATED ONE ATTACK")
+
+def main():
+    boss = BossFight()
+
+    test = boss.get_fights()
+    print(test)
+
+    boss.generate_full_fight()
+
+if __name__ == "__main__":
+    main()
