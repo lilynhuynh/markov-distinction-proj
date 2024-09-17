@@ -1,23 +1,31 @@
 # Markov Distinction Project
 ## Overview
-This project was developed for CSCI3725 Computation Creativity to show our knowledge of creating a computational-creative system using Markov techniques learned in class.
+This project was developed for **CSCI3725 Computation Creativity** to show our knowledge of creating a computational-creative system using Markov techniques learned in class.
+
+![Weiner Dog Graphic](assets/icon.GIF)
 
 My program was inspired by the game "[_Cuphead_](https://store.steampowered.com/app/268910/Cuphead/)" by Studio MDHR where a boss will have pre-set attacks that become more difficult as the phases increase. Each boss will has a total of 3 phases. I represented this idea with my boss character, **Weiner Dog**. **Weiner Dog** has three phases and its respective attacks:
 
-#### Phase 1 - Normal
-- **Slinky Smash**: His body extends and smashes to the left
-- **Yucky Breath**: Like any doggy, they've got a deadly stench!
-- **Boing Jump**: He bounces like a bouncy ball and smashes on impact
+### Phase 1 - Normal
+| **Slinky Smash** | **Yucky Breath** | **Boing Jump** |
+| --- | --- | --- |
+| His body extends and smashes to the left | Like any doggy, they've got a deadly stench! | He bounces like a bouncy ball and smashes on impact |
+| ![Slinky Smash](assets/slinky_smash.gif) | ![Yucky Breath](assets/yucky_breath.gif) | ![Boing Jump](assets/boing_jump.gif) |
 
-#### Phase 2 - Twisty
-- **Extended Chomp**: He twists and does a deadly chomp
-- **Tail Whip**: His tail extends and creates a powerful slash
-- **Barrel Roll**: Watch out, he creates a donut shape and barrels anyone in his way
 
-#### Phase 3 - Hot Dog
-- **Hot Dog**: His hot dog buns become mustard and ketchup blasters
-- **Plane Dog**: His recon plane comes in and sends a flurry of bullets
-- **Dancing Hot Dog**: He turns on his jams and sends a shockwave with each beat bounce
+### Phase 2 - Twisty
+| **Extended Chomp** | **Tail Whip** | **Barrel Roll** |
+| --- | --- | --- |
+| He twists and does a deadly chomp | His tail extends and creates a powerful slash | Watch out, he creates a donut shape and barrels anyone in his way |
+| ![Extended Chomp](assets/extended_chomp.gif) | ![Tail Whip](assets/tail_whip.gif) | ![Barrel Roll](assets/barrel_roll.gif) |
+
+### Phase 3 - Hot Dog
+| **Hot Dog** | **Plane Dog** | **Dancing Hot Dog** |
+| --- | --- | --- |
+| His hot dog buns become mustard and ketchup blasters | His recon plane comes in and sends a flurry of bullets | He turns on his jams and sends a shockwave with each beat bounce |
+| ![Hot Dog](assets/hot_dog.gif) | ![Plane Dog](assets/plane_dog.gif) | ![Dancing Hot Dog](assets/dancing_hot_dog.gif) |
+
+
 
 This program uses **numpy** and **imageio** to compute the randomized probabilities of each attack and generate the gifs respectively. Every **Weiner Dog** animation was hand-drawn by myself.
 
@@ -55,11 +63,11 @@ Some next steps for me personally are:
 4. (opt) Animate in a player character and background.
 
 ### Discussion - Is this system creative?
-In my personal opinion, _creative_ is a very broad term 
-- Discuss whether you believe the system is creative (why or why not)
+_Creative_ is a very broad term and in my personal opinion, and I believe creative to me is something unique and innovative that changes your perception of something you thought/operated previously. While I can't say this is how game engines and character attack sequences work, I do believe it is a creative system since it applies a computational component (Markov Chains) into a system that you would not really expect to apply this logic. While the "game" is not playable, it generates a series of attack sequences based on the given transition matrices for each phase - creating a creative attack sequence generator for a new and refreshing game loop!
 
 ## Acknowledgements
-- Credits to sources and colleagues
-- Inspired by Cuphead
-    - Studied slinky tricks
-    - Researched dachshund dog memes
+I want to acknowledge that I gained inspiration from "[_Cuphead_](https://store.steampowered.com/app/268910/Cuphead/)" by Studio MDHR for the idea of "Boss Characters" and their different phases.
+
+I want to credit my colleagues Alfonso Garcia, Khue Anh Tran, Phincho Sherpa, and Colin Vernet for giving me feedback on my project ideas.
+
+Last of all, I researched a lot during character development to draw inspiration for the attack moves such as slinky trick videos, frame by frame animation sketches for movement, dachshund dog and hot dog memes! [Link](https://drive.google.com/file/d/1HhVaAiW9iSB5FohKKn-ouFJIhugIpYO4/view?usp=drive_link) to my brainstorm document.
